@@ -33,6 +33,7 @@ public class HelloController {
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
 
+
             if (rs.next()) {
                 new Alert(Alert.AlertType.ERROR,"Persona encontrada!").showAndWait();
             } else {
