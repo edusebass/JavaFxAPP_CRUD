@@ -17,30 +17,29 @@ public class HelloController {
     final static String DB_URL="jdbc:mysql://localhost/sistemalogin";
     final static String USER="root";
     final static String PASS="edu1751395623";
+/////////
+    public String usuario;
+    public String password;
+
     @FXML
     protected void onHelloButtonClick() {
-        usuariologin.getText();
-        contraseñalogin.getText();
-    }
+        usuario = usuariologin.getText();
+        password = contraseñalogin.getText();
 
-    @FXML
-    private void busqueda(String QUERY) {
-        try(Connection conn = DriverManager.getConnection(DB_URL,USER,PASS);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(QUERY);){
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
+            String QUERY = "SELECT nombrebd FROM usuariosbd WHERE nombrebd = ? AND passwordbd = ?";
+            PreparedStatement stmt = conn.prepareStatement(QUERY);
+            stmt.setString(1, usuario);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()){
-                //Recorre la DB y guarda los datos en los atributos de la clase Persona
-                persona.setCodigo(rs.getString("codigo_pers"));
-                persona.setCedula(rs.getString("cedula_pers"));
-
-            } else{
-                new Alert(Alert.AlertType.ERROR,"Usuario encontrada!").showAndWait();
+            if (rs.next()) {
+                new Alert(Alert.AlertType.ERROR,"Persona encontrada!").showAndWait();
+            } else {
+                new Alert(Alert.AlertType.ERROR,"Persona no encontrada!").showAndWait();
             }
-
-        } catch(SQLException ex) {
-            throw new RuntimeException(ex);
-
+        } catch (SQLException x) {
+            throw new RuntimeException(x);
         }
     }
 }
