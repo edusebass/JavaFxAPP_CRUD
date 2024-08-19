@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+
+<?import javafx.scene.layout.GridPane?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.javafx1.AppController">
+
+  <GridPane alignment="CENTER" vgap="10.0" hgap="10.0">
+    <!--Encabezado-->
+    <Label fx:id="encabezado" text="REGISTRO DE PERSONAS" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.halignment="CENTER"/>
+    <!--Codigo-->
+    <Label fx:id="codigo_pers" text="Código" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="codigo_in" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <Button text="Buscar por código" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.halignment="CENTER" onAction="#buscarPorCodigo"/>
+    <!--Cedula-->
+    <Label fx:id="cedula_pers" text="Cédula" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="cedula_in" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+    <!--Nombre-->
+    <Label fx:id="nombre_pers" text="Nombre" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="nombre_in" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+    <Button text="Buscar por nombre" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.halignment="CENTER" onAction="#buscarPorNombre"/>
+    <!--Fecha de nacimiento-->
+    <Label fx:id="fechaNac_pers" text="Fecha de Nacimiento" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+    <TextField fx:id="fechaNac_in" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    <Label fx:id="formato_fecha" text="dd-mm-aaaa" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+    <!--Signo Zod-->
+    <Label fx:id="signoZod_pers" text="Signo del Zodiáco" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <ComboBox fx:id="signoSelect" promptText="Selecciona un elemento" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    <!--Botones CRUD-->
+    <Button text="Borrar el presente registro" GridPane.columnIndex="0" GridPane.rowIndex="6" onAction="#borrarRegistro"/>
+    <Button text="Actualizar el presente registro" GridPane.columnIndex="1" GridPane.rowIndex="6" onAction="#actualizarRegistro"/>
+    <Button text="Ingresar el presente registro" GridPane.columnIndex="2" GridPane.rowIndex="6" onAction="#ingresarRegistro"/>
+    <!--Botón limpiar formulario-->
+    <Button text="Limpiar formulario" GridPane.columnIndex="1" GridPane.rowIndex="7" GridPane.halignment="CENTER" onAction="#limpiarRegistro"/>
+  </GridPane>
+
+</VBox>
